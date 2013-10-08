@@ -1,4 +1,4 @@
-require 'active_record/base'
+require 'active_record/base'
 require 'active_support/core_ext/string/inflections'
 
 namespace :db do
@@ -36,7 +36,13 @@ namespace :db do
           next unless ActiveRecord::Seed.target?(table)
           next unless model = table.classify.safe_constantize
 
-          CSV.foreach(csv, headers: true, header_converters: :symbol) do |row|             attrs = row.to_hash.reject{|k, v| v.nil? || v.empty? }             record = model.where(attrs).first_or_create             record.update_attributes(attrs, protection: false )             record.save(validate: false)            #end           end
+          CSV.foreach(csv, headers: true, header_converters: :symbol) do |row|
+             attrs = row.to_hash.reject{|k, v| v.nil? || v.empty? }
+             record = model.where(attrs).first_or_create
+             record.update_attributes(attrs, protection: false )
+             record.save(validate: false)
+            #end
+          end
           puts "#{table} loaded."
         end
       #end
