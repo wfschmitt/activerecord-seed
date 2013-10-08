@@ -30,22 +30,16 @@ namespace :db do
 
     desc 'Load all table data from seed csv files'
     task :load => :prepare do
-      ActiveRecord::Base.transaction do
+      #ActiveRecord::Base.transaction do
         Dir.glob("#{ActiveRecord::Seed.config.seeds_dir}/*.csv").each do |csv|
           table = File::basename(csv, '.csv')
           next unless ActiveRecord::Seed.target?(table)
           next unless model = table.classify.safe_constantize
 
-          CSV.foreach(csv, headers: true, header_converters: :symbol) do |row|
-            attrs = row.to_hash.reject{|k, v| v.nil? || v.empty? }
-            model.where(attrs).first_or_create do |record|
-              record.update_attributes(attrs,{validate: false, protection: false} )
-              #record.save(validate: false)
-            end
-          end
+          CSV.foreach(csv, headers: true, header_converters: :symbol) do |row|             attrs = row.to_hash.reject{|k, v| v.nil? || v.empty? }             record = model.where(attrs).first_or_create             record.update_attributes(attrs, protection: false )             record.save(validate: false)            #end           end
           puts "#{table} loaded."
         end
-      end
+      #end
     end
   end
 end
