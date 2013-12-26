@@ -28,7 +28,7 @@ namespace :db do
   end
 
   desc 'Load all table data from seed csv files'
-  task :seed_load => :prepare do
+  task :seed_load => :seed_prepare do
     #ActiveRecord::Base.transaction do
     Dir.glob("#{ActiveRecord::Seed.config.seeds_dir}/*.csv").each do |csv|
       table = File::basename(csv, '.csv')
