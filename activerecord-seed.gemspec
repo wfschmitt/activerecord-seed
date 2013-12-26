@@ -6,11 +6,11 @@ require 'active_record/seed/version'
 Gem::Specification.new do |spec|
   spec.name          = "activerecord-seed"
   spec.version       = ActiveRecord::Seed::VERSION
-  spec.authors       = ["itzki"]
-  spec.email         = ["itzki.h@gmail.com"]
+  spec.authors       = ["itzki wfschmitt"]
+  spec.email         = ["itzki.h@gmail.com wfschmittx@gmail.com"]
   spec.description   = %q{An extension of ActiveRecord that supports to dump/load data with CSV}
   spec.summary       = %q{An extension of ActiveRecord that supports to dump/load data with CSV}
-  spec.homepage      = "https://github.com/itzki/activerecord-seed"
+  spec.homepage      = "https://github.com/wfschmitt/activerecord-seed"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -23,3 +23,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
 end
+
