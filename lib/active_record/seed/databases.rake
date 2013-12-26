@@ -12,7 +12,7 @@ namespace :db do
     end
 
    desc 'Dump all table data to seed csv files'
-   task :seed_dump => :sedd_prepare do
+   task :seed_dump => :seed_prepare do
       seeds_dir = ActiveRecord::Seed.config.seeds_dir
       Dir.mkdir(seeds_dir) unless File.directory?(seeds_dir)
 
