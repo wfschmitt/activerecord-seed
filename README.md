@@ -1,5 +1,7 @@
 # ActiveRecord::Seed
 
+REMARK: all 'stolen' from github: 'itzki/activerecord-seed' and modified
+
 An extension of ActiveRecord that supports to dump/load data with CSV
 
 (Won't release on rubygems.org because of my personal demand and no test)
@@ -8,7 +10,7 @@ An extension of ActiveRecord that supports to dump/load data with CSV
 
 Add this line to your application's Gemfile. **(use `github` option)**
 
-    gem 'activerecord-seed', github: 'itzki/activerecord-seed'
+    gem 'activerecord-seed', github: 'wfschmitt/activerecord-seed'
 
 And then execute:
 
@@ -43,7 +45,7 @@ config.seed.seeds_dir # default: Rails.root.join('db/data').to_s
 * Export to csv files
 
 ```sh
-bundle exec rake db:seed:dump
+bundle exec rake db:seed_dump
 ```
 
 ### Load
@@ -51,7 +53,7 @@ bundle exec rake db:seed:dump
 * Import from csv files
 
 ```sh
-bundle exec rake db:seed:load
+bundle exec rake db:seed_load
 ```
 
 ## Contributing

@@ -2,8 +2,7 @@ require 'active_record/base'
 require 'active_support/core_ext/string/inflections'
 
 namespace :db do
-  namespace :seed do
-    task :prepare => :environment do
+   task :seed_prepare => :environment do
       abort('ERROR: must set config `tables`') if ActiveRecord::Seed.config.tables.empty?
 
       models_dir = ActiveRecord::Seed.config.models_dir
@@ -12,8 +11,8 @@ namespace :db do
       end
     end
 
-    desc 'Dump all table data to seed csv files'
-    task :dump => :prepare do
+   desc 'Dump all table data to seed csv files'
+   task :seed_dump => :sedd_prepare do
       seeds_dir = ActiveRecord::Seed.config.seeds_dir
       Dir.mkdir(seeds_dir) unless File.directory?(seeds_dir)
 
@@ -29,7 +28,7 @@ namespace :db do
     end
 
     desc 'Load all table data from seed csv files'
-    task :load => :prepare do
+    task :seed_load => :prepare do
       #ActiveRecord::Base.transaction do
         Dir.glob("#{ActiveRecord::Seed.config.seeds_dir}/*.csv").each do |csv|
           table = File::basename(csv, '.csv')
