@@ -8,7 +8,7 @@ module ActiveRecord
 
       module ClassMethods
         def dump_to_csv
-          columns = column_names - %w<id created_at updated_at>
+          columns = column_names # - %w<id created_at updated_at>
           CSV.generate do |csv|
             csv << columns
             scoped.each do |record|
