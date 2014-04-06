@@ -37,7 +37,7 @@ namespace :db do
           next unless model = table.classify.safe_constantize
 
           CSV.foreach(csv, headers: true, header_converters: :symbol) do |row|
-             attrs = row.to_hash.reject{|k, v| v.nil? || v.empty? }
+             attrs = row.to_hash.reject{|k,v| v.nil? || v.empty? }
              record = model.where(attrs).first_or_create
              record.update_attributes(attrs, protection: false )
              record.save(validate: false)
@@ -46,6 +46,27 @@ namespace :db do
           puts "#{table} loaded."
         end
       #end
+    end
+    desc 'restore tables in given order'
+    task :restore => :prepare do
+      #ActiveRecord::Base.transaction do
+      unless ActiveRecord::Seed.config.restore_tables.nil?
+        ActiveRecord::Seed.config.restore_tables.each do |csv|
+          next unless File.exists?("#{ActiveRecord::Seed.config.seeds_dir}/#{csv}.csv")
+          table = csv
+          next unless ActiveRecord::Seed.target?(table)
+          next unless model = table.classify.safe_constantize
+
+          CSV.foreach(csv, headers: true, header_converters: :symbol) do |row|
+            attrs = row.to_hash.reject{|k,v| v.nil? || v.empty? }
+            record = model.where(attrs).first_or_create
+            record.update_attributes(attrs, protection: false )
+            record.save(validate: false)
+            #end
+          end
+          puts "#{table} loaded."
+        end
+      end
     end
   end
 end
