@@ -1,5 +1,6 @@
 module ActiveRecord
   module Seed
-    VERSION = "0.0.2"
+    puts File.expand_path('../../../VERSION', __FILE__)
+    VERSION = File.read(File.expand_path('../../../../VERSION', __FILE__)).chomp
   end
 end
