@@ -5,7 +5,7 @@ require 'active_record/seed/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "activerecord-seed"
-  spec.version       = "0.0.5"
+  spec.version       = "0.0.6"
   spec.authors       = ["itzki wfschmitt"]
   spec.email         = ["itzki.h@gmail.com wfschmittx@gmail.com"]
   spec.description   = %q{An extension of ActiveRecord that supports to dump/load data with CSV}
