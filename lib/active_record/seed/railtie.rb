@@ -4,7 +4,7 @@ module ActiveRecord
       config.seed = ActiveRecord::Seed.config
 
       rake_tasks do
-        load 'active_record/seed/databases.rake'
+        load 'active_record/seed/ofo_db.rake'
       end
     end
   end

@@ -5,7 +5,7 @@ require 'active_record/seed/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "activerecord-seed"
-  spec.version       = "0.0.6"
+  spec.version       = "0.0.6.2"
   spec.authors       = ["itzki wfschmitt"]
   spec.email         = ["itzki.h@gmail.com wfschmittx@gmail.com"]
   spec.description   = %q{An extension of ActiveRecord that supports to dump/load data with CSV}
@@ -19,9 +19,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "activerecord"
-  spec.add_dependency "activesupport"
+  spec.add_dependency 'activesupport'
   spec.add_dependency 'version_bumper'
   spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rake", '~> 0'
 end
 
